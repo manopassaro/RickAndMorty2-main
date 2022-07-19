@@ -189,6 +189,71 @@
                     }
                   }
             }
+        },
+        "/user/": {
+            "get": {
+                "summary": "listar todos os usuários",
+                "description": "rota puxa todos os usuários cadastrados no sistema",
+                "tags": ["User"],
+                "responses": {
+                    "404": {
+                        "description": "Not found"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {                                   
+                                    "$ref": "#/components/schemas/User"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            
+        },
+        "/user/creation": {
+            "post": {
+                "summary": "cadastrar usuário",
+                "description": "rota caracterizada por criar um novo login para o usuário",
+                "tags": ["User"],
+                "requestBody": {
+                    "content": {
+                      "application/json": {
+                        "schema": {
+                          "$ref": "#/components/schemas/User"
+                        },
+                        "examples": {
+                          "Usuário": {
+                            "value": {
+                              "username": "miguel123",
+                              "email": "@gmail.com",
+                              "password": "******"
+                            }
+                          }
+                        }
+                      }
+                    }
+                },
+                "responses": {
+                    "404": {
+                        "description": "Envie todas as informações"
+                    },
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            }
+                        }
+                    }
+                  }
+                 
+            }
         }
     },
     "components": {
@@ -200,6 +265,20 @@
                         "type": "string"
                     },
                     "pic": {
+                        "type": "string"
+                    }
+                }
+            },
+            "User": {
+                "type": "object",
+                "properties": {
+                    "username": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "password": {
                         "type": "string"
                     }
                 }
