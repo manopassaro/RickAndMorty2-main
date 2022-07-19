@@ -3,7 +3,7 @@ const cors = require("cors");
 const connectToDatabase = require("./database/database");
 const characRoute = require("./Character/charac.routes");
 const userRoute = require("./User/user.routes");
-const swaggerRoute = require("./swagger/swagger.routes")
+const swaggerRoute = require("./swagger/swagger.routes");
 const app = express();
 const port = process.env.port || 3000;
 require("dotenv").config();
