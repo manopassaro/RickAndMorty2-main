@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const connectToDatabase = require("./database/database");
@@ -6,7 +7,6 @@ const userRoute = require("./User/user.routes");
 const swaggerRoute = require("./swagger/swagger.routes");
 const app = express();
 const port = process.env.PORT || 3000;
-require("dotenv").config();
 
 app.use(express.json());
 app.use(cors());
